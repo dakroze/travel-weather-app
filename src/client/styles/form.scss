@@ -1,0 +1,68 @@
+//variables
+$clicked: #155799;
+$white: #F1F2F2;
+$transition: all 0.25s ease-in-out;
+
+// mixin
+@mixin mybutton($color_1, $color_2) {
+    margin: 10px 0px;
+    border: 1px solid grey;
+    text-transform: uppercase;
+    color: $color_1;
+    background-color: $color_2;
+    transition: $transition;
+    &:hover {
+      background-color: $color_1;
+      border-color: $color_1;
+      color: $color_2;
+    }
+    &:active {
+      background-color: $color_1;
+      border-color: $color_1;
+      color: $color_2;
+      box-shadow: none;
+    }
+    &:focus, &:active:focus {
+      background-color: $color_1;
+      border-color: $color_1;
+      color: $color_2;
+      outline: 5px auto $color_1;
+    }
+    &:visited {
+      background-color: $color_1;
+      border-color: $color_1;
+    }
+}
+
+.btn {
+    border-radius: 3px;
+    cursor: pointer;
+    @include mybutton($clicked, $white);
+}
+
+
+form {
+    border: 1px solid #545454;
+    border-radius: 3px;
+    padding: 40px;
+}
+
+input {
+    padding: 5px 20px;
+    width: 100%;
+    line-height: 16px;
+    margin: 10px 0;
+}
+
+#results {
+    display: flex;
+    flex-direction: column;
+    color: $clicked;
+    width: inherit;
+    height: 75px;
+}
+
+.color{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
