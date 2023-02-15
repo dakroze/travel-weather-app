@@ -1,5 +1,5 @@
 // Import JS Files
-import { checkForText, scoreCheck } from './js/nameChecker'
+import { checkForCity } from './js/cityChecker'
 import { handleSubmit } from './js/formHandler'
 import { postData } from './js/postData'
 
@@ -13,8 +13,7 @@ import './styles/header.scss'
 // console.log("CHANGE!!");
 
 export {
-    checkForText,
-    scoreCheck,
+    checkForCity,
     handleSubmit,
     postData
    }

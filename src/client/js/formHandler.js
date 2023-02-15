@@ -3,7 +3,7 @@ function handleSubmit(event) {
     // check what text was put into form field
     let formText = document.getElementById('name').value
 
-    if (Client.checkForText(formText) === "NOK"){
+    if (Client.checkForCity(formText) === "NOK"){
         throw new Error('Input is either empty or isnt text. Please check input');
     }
     else {
