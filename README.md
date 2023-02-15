@@ -1,8 +1,13 @@
+# Name
+My Weather App
+
 # Project Description
-This project is a web tool that allows users to run Natural Language Processing (NLP) on articles or blogs found on other websites. NLP is the ability of an application to understand the human language, written or oral.
+This capstone project is simple webform that collects user travel city destination and date and generates weather forecast for the date and location. The application will also display a landmark image of the travel city
 
 
 ## Setting up the API
-
-This project uses the MeaningCloud Setiment Analysis API which can be found at https://learn.meaningcloud.com/developer/sentiment-analysis/2.1/dev-tools
+The following APIs are used:
+Weatherbit API - takes coordinates as input and returns weather data
+Geonames API - takes city name as input and returns location coordinates
+Pixabay API - takes city name as input and returns a landmark image
 
