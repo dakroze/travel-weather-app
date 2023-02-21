@@ -3,8 +3,8 @@ const postData = async (url, data) => {
     method: 'POST', // *GET, POST, PUT, DELETE, etc.
     credentials: 'same-origin',
     mode: 'cors',
-    headers: {'Content-Type': 'text/plain'},
-    body: data // body data type must match "Content-Type" header        
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(data) // body data type must match "Content-Type" header        
   });
     try {
       const newData = await response.json();

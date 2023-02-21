@@ -27,14 +27,21 @@
                 <p>Welcome to My Travel App, the number one app for all your weather travel needs </p>
             </section>
             <section id="form">
-                <form class="" onsubmit="return Client.handleSubmit(event)">
+                <form autocomplete="off" class="" onsubmit="return Client.handleSubmit(event)">
                     <ul>
                         <li>
-                            <label for="city"> Destination City</label>
-                            <input id="city" type="text" name="user_city">
+                            <label class="autocomplete" for="country"></label>
+                            <div class="autocomplete">
+                                <input id="myInput" type="text" name="myCountry" placeholder="Country" onclick="return Client.autoComplete(document.getElementById('myInput'), Client.countries)">
+                            </div>
+                            <div id="result"></div>
                         </li>
                         <li>
-                            <label for="date">Travel Date</label>
+                            <label for="city"></label>
+                            <input id="city" type="text" name="user_city" placeholder="Destination City">
+                        </li>
+                        <li>
+                            <label for="date"></label>
                             <input id="date" type="date" name="user_date">
                         </li>
                         <li>
@@ -43,8 +50,8 @@
                      </ul>
                 </form>
             </section>
-            <section id="user-fd">
-                
+            <section id="user-fb">
+                <div></div>                
             </section>
         </main>
 

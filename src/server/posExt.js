@@ -32,4 +32,10 @@ const posExt = async (key, url) => {
     }
 }
 
-module.exports = posExt;
+const fetchSumtin = async (url) => {
+    const result = await fetch(url);
+    const res = await result.json();
+    return res
+}
+
+exports.fetchSumtin = fetchSumtin;

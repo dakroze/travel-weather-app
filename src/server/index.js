@@ -1,4 +1,4 @@
-var path = require('path');
+const path = require('path');
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
@@ -16,10 +16,12 @@ const app = express()
 
 app.use(cors())
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.text());
+app.use(bodyParser.json());
 app.use(express.static('dist'))
 
-console.log(__dirname)
+// console.log(__dirname)
+
+let allResData = {};
 
 app.get('/', (req, res) => {
     // res.sendFile('dist/index.html')
@@ -37,9 +39,16 @@ app.get('/test', (req, res) => {
 
 
 // POST request route
-app.post('/pr', (req,res) => {
-    const userText = req.body
-    console.log(userText)
-    posExt(`${process.env.API_KEY}`,`${userText}`)
-    .then(data => res.send(data))
+app.post('/travelTime', (req,res) => {
+    const userData = req.body
+    posExt.fetchSumtin(`http://api.geonames.org/searchJSON?name=${userData.city}&country=${userData.country}&maxRows=1&username=${process.env.USERNAME}`)
+    .then(data => {
+        let coordData = {};
+        console.log(data)
+        coordData.lat = data.geonames[0].lat
+        coordData.long = data.geonames[0].lng
+        console.log(coordData)
+        return coordData
+    })
+
 })
