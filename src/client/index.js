@@ -1,5 +1,5 @@
 // Import JS Files
-import { checkForCity, autoComplete} from './js/cityChecker'
+import { checkForCity, autoComplete, checkDate} from './js/cityChecker'
 import { handleSubmit } from './js/formHandler'
 import { postData } from './js/postData'
 import {countries} from './js/countries'
@@ -16,6 +16,7 @@ import './styles/header.scss'
 export {
     checkForCity,
     autoComplete,
+    checkDate,
     countries,
     handleSubmit,
     postData

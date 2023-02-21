@@ -1,11 +1,11 @@
 function checkForCity(inputCountry,inputCity, inputDate) {
     console.log("::: Running checkForText :::", inputCountry, inputCity, inputDate);
     if(!inputCountry || !inputCity || !inputDate) {
-        alert('One of the input fields is empty')
+        alert('One of the input fields is empty.')
         return "NOK";
     }
     else if(!isNaN(inputCountry) || !isNaN(inputCity) ){
-        alert("You have entered a number")
+        alert("You have entered a number.")
         return "NOK";
     }
     else {
@@ -17,22 +17,50 @@ function checkForCity(inputCountry,inputCity, inputDate) {
     between 0 - 16 days from current date */
 
 function checkDate(userdate) {
+    // get current date
     const dateNow = (new Date()).toISOString().slice(0,10)
-    console.log(dateNow)
-    const userYear = userdate.slice(0,4)
-    const userMonth = userdate.slice(5,7)
-    const userDay = userdate.slice(8,10)
-    if (userYear !== dateNow.slice(0,4)) {
-        alert("This application only works dates that are no more than 16 days out. It also doesn't work for past dates")
-    } else if ((userMonth - dateNow.slice(5,7)) > 1 || (userMonth - dateNow.slice(5,7)) < 0) {
-        alert("This application only works dates that are no more than 16 days out. It also doesn't work for past dates")
-    } else if ((userMonth - dateNow.slice(5,7)) === 1) {
-        if(dateNow.slice(8,10) < 16){ alert('This application only works dates that are no more than 16 days out.')}
-        else if((userDay > 16)){alert('This application only works dates that are no more than 16 days out')}
-    } else if ((userMonth - dateNow.slice(5,7)) === 0){
-        if((userDay) - dateNow.slice(8,18) > 16 ){alert('This application only works dates that are no more than 16 days out')}
+    const nowYear = parseInt(dateNow.slice(0,4))
+    const nowMonth = parseInt(dateNow.slice(5,7))
+    const nowDay = parseInt(dateNow.slice(8,10))
+    // convert to date String to Int
+    const userYear = parseInt(userdate.slice(0,4))
+    const userMonth = parseInt(userdate.slice(5,7))
+    const userDay = parseInt(userdate.slice(8,10))
+    if (userYear !== nowYear) {
+        alert("This application only works for dates that are no more than 16 days out. It also doesn't work for past dates.")
+    } else if ((userMonth - nowMonth) > 1 || (userMonth - nowMonth) < 0) {
+        alert("This application only works for dates that are no more than 16 days out. It also doesn't work for past dates.")
+    } else if ((userMonth - nowMonth) === 1){
+        // conditional statement for months with 28 days (February)
+        if (nowMonth == '02') {
+            if((((28 - nowDay) + userDay) > 16)) {
+                alert("This application only works for dates that are no more than 16 days out.")
+            } else {return "Pass"}
+            // conditional statement for months with 30 days
+        }else if (nowMonth == '04' || nowMonth == '06' || nowMonth == '09' || nowMonth == '11') {
+            if(((30 - nowDay) + userDay > 16)){
+                alert("This application only works dates that are no more than 16 days out.")
+            } else {return "Pass"}
+        }
+            // conditional statement for months with 31 days
+        else{
+            if ((31 - nowDay) + userDay > 16) {
+                alert("This application only works dates that are no more than 16 days out.")
+            } else {return "Pass"}
+        }
+    } else if (userMonth - nowMonth === 0){
+        if( userDay - nowDay > 16 ){
+            alert('This application only works dates that are no more than 16 days out.')
+        }
+        else if (userDay - nowDay < 0){
+            alert('This is a past date. Please re-enter travel date.')
+        } else {return 'Pass'}
+
+    } else {
+        return "Pass"
     }
 }
+      
 
 
 function autoComplete(inp, arr) {
@@ -131,4 +159,4 @@ function autoComplete(inp, arr) {
     });
 }
 
-export { checkForCity, autoComplete }
+export { checkForCity, autoComplete, checkDate }
