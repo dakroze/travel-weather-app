@@ -19,6 +19,7 @@ function checkForCity(inputCountry,inputCity, inputDate) {
 function checkDate(userdate) {
     // get current date
     const dateNow = (new Date()).toISOString().slice(0,10)
+    console.log(dateNow)
     const nowYear = parseInt(dateNow.slice(0,4))
     const nowMonth = parseInt(dateNow.slice(5,7))
     const nowDay = parseInt(dateNow.slice(8,10))

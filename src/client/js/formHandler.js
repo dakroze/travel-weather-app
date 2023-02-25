@@ -18,12 +18,12 @@ function handleSubmit(event) {
     else {
         console.log("::: Form Submitted :::")
 
-
+        const high = document.getElementById('high')
         Client.postData('http://localhost:8081/travelTime',formData)
         .then( data => {
-            score.innerHTML = `::: Score_Tag: ${Client.scoreCheck(data.score_tag)} :::`
-            sub.innerHTML = `::: Subjectivity: ${data.subjectivity} :::`
-            text.innerHTML = `::: Text: ${data.text} :::`
+            high.innerHTML = `::: Score_Tag: ${data.weather.description} :::`
+            // sub.innerHTML = `::: Subjectivity: ${data.subjectivity} :::`
+            // text.innerHTML = `::: Text: ${data.text} :::`
         })
     }
 }
