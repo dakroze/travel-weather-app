@@ -19,9 +19,11 @@ function handleSubmit(event) {
         console.log("::: Form Submitted :::")
 
         const high = document.getElementById('high')
+        const img = document.getElementById('pic')
         Client.postData('http://localhost:8081/travelTime',formData)
         .then( data => {
-            high.innerHTML = `::: Score_Tag: ${data.weather.description} :::`
+            img.src = data.pictureURL
+            high.innerHTML = `::: Score_Tag: ${data.weatherData.weather.description} :::`
             // sub.innerHTML = `::: Subjectivity: ${data.subjectivity} :::`
             // text.innerHTML = `::: Text: ${data.text} :::`
         })
