@@ -46,14 +46,12 @@ app.post('/travelTime', (req,res) => {
     posExt.fetchSumtin(`https://pixabay.com/api/?key=${process.env.PX_API_KEY}&q=${userData.city}+landmark&category=travel&image_type=photo`)
     .then(data => {
         if (data.total === 0){
-            return allResData.pictureURL = "https://pixabay.com/photos/plane-clouds-wing-aviation-1211019/";
+            allResData.pictureURL = "https://cdn.pixabay.com/photo/2021/12/13/07/06/airplane-6867678_1280.jpg";
         } else {
-            // total hits from API response
-            const hitCount = data.totalHits;
             // generate random hit from all hits
             const hit = data.hits[Math.floor(Math.random() * data.hits.length)];
             // update object store
-            return allResData.pictureURL = hit.webformatURL
+            allResData.pictureURL = hit.webformatURL
         }
          // fetch lat and long from Geonames API 
         posExt.fetchSumtin(`http://api.geonames.org/searchJSON?name=${userData.city}&country=${userData.country}&maxRows=1&username=${process.env.USERNAME}`)
@@ -67,9 +65,9 @@ app.post('/travelTime', (req,res) => {
                 let servData = wbData.data.filter(i => i.datetime === userData.date)
                 console.log(servData[0])
                 allResData.weatherData = servData[0]
+                // send servData to client
+                res.send(allResData)
             })
-        // send servData to client
-        res.send(allResData)
         })
     })
 })
