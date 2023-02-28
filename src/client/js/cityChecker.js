@@ -1,5 +1,5 @@
 function checkForCity(inputCountry,inputCity, inputDate) {
-    console.log("::: Running checkForText :::", inputCountry, inputCity, inputDate);
+    console.log("::: Running checkForText :::");
     if(!inputCountry || !inputCity || !inputDate) {
         alert('One of the input fields is empty.')
         return "NOK";
@@ -18,7 +18,8 @@ function checkForCity(inputCountry,inputCity, inputDate) {
 
 function checkDate(userdate) {
     // get current date
-    const dateNow = (new Date()).toISOString().slice(0,10)
+    const date = new Date();
+    const dateNow = new Date(date.getTime() - (date.getTimezoneOffset() * 60000)).toISOString();
     console.log(dateNow)
     const nowYear = parseInt(dateNow.slice(0,4))
     const nowMonth = parseInt(dateNow.slice(5,7))

@@ -1,0 +1,32 @@
+#user-fb-wrapper {
+  display: none;
+  grid-template-columns: auto auto;
+  grid-template-rows: 400px;
+  grid-column-gap: 20px;
+  background-color: #F4EEFF;
+  border-radius: 5px;
+  margin-left: 100px;
+  margin-right: 100px;
+  margin-bottom: 100px;
+}
+
+#feedbck {
+  margin: 30px;
+  padding: 10px;
+}
+
+#pic-wrapper {
+  margin: 30px;
+  padding: 10px;
+}
+
+#pic{
+  width: 480px;
+  height: 300px;
+}
+
+
+#logo{
+  width: 15px;
+  height: 20px;
+}

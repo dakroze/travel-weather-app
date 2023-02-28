@@ -46,7 +46,7 @@ app.post('/travelTime', (req,res) => {
     posExt.fetchSumtin(`https://pixabay.com/api/?key=${process.env.PX_API_KEY}&q=${userData.city}+landmark&category=travel&image_type=photo`)
     .then(data => {
         if (data.total === 0){
-            allResData.pictureURL = "https://cdn.pixabay.com/photo/2021/12/13/07/06/airplane-6867678_1280.jpg";
+            allResData.pictureURL = "https://pixabay.com/get/gbc55c80e82a2fa86be29fbf5b14ca454653883c00bae8f48e83e1dc8cedc32c018eadd3469bb101365dd6c7cb6382ce3aba2a03f972f20ea00136b38d0c0011d_640.jpg";
         } else {
             // generate random hit from all hits
             const hit = data.hits[Math.floor(Math.random() * data.hits.length)];
@@ -63,11 +63,15 @@ app.post('/travelTime', (req,res) => {
             posExt.fetchSumtin(`https://api.weatherbit.io/v2.0/forecast/daily?lat=${coordData.lat}&lon=${coordData.long}&units=I&key=${process.env.WB_API_KEY}`)
             .then(wbData => {
                 let servData = wbData.data.filter(i => i.datetime === userData.date)
-                console.log(servData[0])
-                allResData.weatherData = servData[0]
+                allResData.weatherHigh = `High - ${servData[0].high_temp}`
+                allResData.weatherLow = `Low - ${servData[0].low_temp}`
+                allResData.description = `Mostly ${servData[0].weather.description.toLowerCase()} throughout the day.`
                 // send servData to client
                 res.send(allResData)
             })
         })
+    .catch( (err) => { 
+        console.log(err.message)
+    })
     })
 })
