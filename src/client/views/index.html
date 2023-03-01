@@ -2,39 +2,45 @@
 <html lang="en" dir="ltr">
     <head>
         <meta charset="utf-8">
-        <title>Test</title>
-        <link rel="stylesheet" src="/styles/resets.css">
-        <link rel="stylesheet" src="/styles/base.css">
-        <link rel="stylesheet" src="/styles/header.css">
-        <link rel="stylesheet" src="/styles/form.css">
-        <link rel="stylesheet" src="/styles/footer.css">
+        <title>Catch-A-Flight App</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
     </head>
 
     <body>
 
         <header>
-            <div class="">
-                Logo
-            </div>
+            <div id="logo"></div>
             <div class="nav">
-                <div>Home</div>
+                <div>
+                    <a href="/">
+                        Home
+                    </a>   
+                </div>
             </div>
         </header>
 
         <main>
             <section id="intro">
-                <h1>My Travel App</h1>
-                <p>Welcome to My Travel App, the number one app for all your weather travel needs </p>
+                <h1>Catch-A-Flight</h1>
+                <p>Welcome to Catch-A-Flight, the number one app for all your weather travel needs.</p>
             </section>
             <section id="form">
-                <form class="" onsubmit="return Client.handleSubmit(event)">
+                <form autocomplete="off" class="" onsubmit="return Client.handleSubmit(event)">
                     <ul>
                         <li>
-                            <label for="city"> Destination City</label>
-                            <input id="city" type="text" name="user_city">
+                            <label class="autocomplete" for="country"></label>
+                            <div class="autocomplete">
+                                <input id="country" type="text" name="myCountry" placeholder="Country" onclick="return Client.autoComplete(document.getElementById('country'), Client.countries)">
+                            </div>
                         </li>
                         <li>
-                            <label for="date">Travel Date</label>
+                            <label for="city"></label>
+                            <input id="city" type="text" name="user_city" placeholder="Destination City">
+                        </li>
+                        <li>
+                            <label for="date"></label>
                             <input id="date" type="date" name="user_date">
                         </li>
                         <li>
@@ -43,15 +49,33 @@
                      </ul>
                 </form>
             </section>
-            <section id="user-fd">
-                
+            <section id="user-fb-wrapper">
+                <div id="pic-wrapper">
+                    <img id="pic" src="" alt="Picture of country searched">
+                </div>
+                <div id="feedbck">
+                    <h2>My trip to: 
+                        <span id="myCity"></span>, <span id="myCountry"></span>
+                    </h2>
+                    <h2>Departing:
+                        <span id="myDate"></span>
+                    </h2>
+                        
+                    <div id="myWeather">
+                        <h3>Typical weather for your travel date is:
+                            <p id="hiLo"></p>
+                            <p id="myDesc"></p>
+                        </h3>
+                    </div>
+                </div>
+
             </section>
         </main>
 
         <footer>
-            <p>This is a footer</p>
+            <p>&copy Catch-A-Flight web application is a project by <span>Roy Shaba</span>.</p>
         </footer>
-        <!-- <script>
+        <script>
             // Check that service workers are supported
             if ('serviceWorker' in navigator) {
                 // Use the window load event to keep the page load performant
@@ -59,6 +83,6 @@
                     navigator.serviceWorker.register('/service-worker.js');
                 });
             }
-        </script> -->
+        </script>
     </body>
 </html>

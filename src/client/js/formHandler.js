@@ -1,21 +1,37 @@
+import { checkDate } from "./cityChecker";
+
 function handleSubmit(event) {
     event.preventDefault()
-    // check what text was put into form field
-    let formText = document.getElementById('name').value
-
-    if (Client.checkForCity(formText) === "NOK"){
-        throw new Error('Input is either empty or isnt text. Please check input');
+    // create object that will store user info put into form fields
+    let formData = {};
+    // extract country ISO code
+    formData.country = document.getElementById('country').value.slice(0,3)
+    formData.city = document.getElementById('city').value
+    if (checkDate(document.getElementById('date').value) === 'Pass'){
+        formData.date = document.getElementById('date').value
+    }
+    // check to see if any of the form fields are empty
+    if (Client.checkForCity(formData.country,formData.city,formData.date) === "NOK"){
+        throw new Error('Input is either empty or isnt text. Please check input.');
     }
     else {
         console.log("::: Form Submitted :::")
-        let score = document.getElementById('score')
-        let sub = document.getElementById('sub')
-        let text = document.getElementById('text')
-        Client.postData('http://localhost:8081/pr',formText)
+
+        let img = document.getElementById('pic')
+        let myCity = document.getElementById('myCity')
+        let myCountry = document.getElementById('myCountry')
+        let myDate = document.getElementById('myDate')
+        let hiLo = document.getElementById('hiLo')
+        let myDesc = document.getElementById('myDesc')
+        Client.postData('http://localhost:8081/travelTime',formData)
         .then( data => {
-            score.innerHTML = `::: Score_Tag: ${Client.scoreCheck(data.score_tag)} :::`
-            sub.innerHTML = `::: Subjectivity: ${data.subjectivity} :::`
-            text.innerHTML = `::: Text: ${data.text} :::`
+            img.src = data.pictureURL
+            myCity.innerHTML = formData.city[0].toUpperCase() + formData.city.slice(1);
+            myCountry.innerHTML = document.getElementById('country').value[3].toUpperCase() + document.getElementById('country').value.slice(4);
+            myDate.innerHTML = formData.date.slice(5,8)+formData.date.slice(8,10)+'-'+formData.date.slice(0,4)
+            hiLo.innerHTML = `${data.weatherHigh}, ${data.weatherLow}`
+            myDesc.innerHTML = data.description
+            document.getElementById('user-fb-wrapper').style.display = 'grid';
         })
     }
 }

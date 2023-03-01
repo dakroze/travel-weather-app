@@ -48,6 +48,6 @@ module.exports = {
             protectWebpackAssets: false
         }),
         //Instantiating service worker plugin
-        // new WorkboxPlugin.GenerateSW()
+        new WorkboxPlugin.GenerateSW()
     ]
 }
