@@ -1,3 +1,4 @@
+// array of all countries and country code for autocomplete
 const countries = ["AF Afghanistan",
 "AL Albania",
 "DZ Algeria",

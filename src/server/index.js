@@ -5,20 +5,16 @@ const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
 dotenv.config();
 
-
-// const mockAPIResponse = require('./mockAPI.js');
-
 // import posExt module from posExt.js
 const posExt = require('./posExt.js')
 
+// initiate express instance
 const app = express()
 
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static('dist'))
-
-// console.log(__dirname)
 
 
 app.get('/', (req, res) => {
@@ -31,12 +27,7 @@ app.listen(8081, () => {
     console.log('Example app listening on port 8081!')
 })
 
-app.get('/test', (req, res) => {
-    res.send(mockAPIResponse)
-})
-
 // create empty object to hold all API response data
-
 const allResData = {};
 
 // POST request route
