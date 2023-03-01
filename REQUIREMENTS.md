@@ -20,3 +20,5 @@
 
 - [ ] Be able to show content offline using Service workers.
 
+- [ ] Please run 'npm i --legacy-peer-deps' to install all dependencies.
+
