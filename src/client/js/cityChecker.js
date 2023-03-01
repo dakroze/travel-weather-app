@@ -80,10 +80,14 @@ function autoComplete(inp, arr) {
         a = document.createElement("div");
         a.setAttribute("id", this.id + "autocomplete-list");
         a.setAttribute("class", "autocomplete-items");
-        /*append the DIV element as a child of the autocomplete container:*/
+        /*append the div element as a child of the autocomplete container:*/
         this.parentNode.appendChild(a);
         /*for each item in the array...*/
-        const matches = arr.filter(item => item.includes(val))
+        const matches = arr.filter((item) => {
+            if(item.toLowerCase().includes(val) || item.includes(val)){
+                return true;
+            }
+        })
         /*create a div element for each matching element:*/
         matches.forEach((item) => {
             b = document.createElement("div");

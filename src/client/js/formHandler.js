@@ -10,7 +10,7 @@ function handleSubmit(event) {
     if (checkDate(document.getElementById('date').value) === 'Pass'){
         formData.date = document.getElementById('date').value
     }
-
+    // check to see if any of the form fields are empty
     if (Client.checkForCity(formData.country,formData.city,formData.date) === "NOK"){
         throw new Error('Input is either empty or isnt text. Please check input.');
     }

@@ -63,8 +63,8 @@ app.post('/travelTime', (req,res) => {
             posExt.fetchSumtin(`https://api.weatherbit.io/v2.0/forecast/daily?lat=${coordData.lat}&lon=${coordData.long}&units=I&key=${process.env.WB_API_KEY}`)
             .then(wbData => {
                 let servData = wbData.data.filter(i => i.datetime === userData.date)
-                allResData.weatherHigh = `High - ${servData[0].high_temp}`
-                allResData.weatherLow = `Low - ${servData[0].low_temp}`
+                allResData.weatherHigh = `High - ${servData[0].high_temp+String.fromCodePoint(8451)}`
+                allResData.weatherLow = `Low - ${servData[0].low_temp+String.fromCodePoint(8451)}`
                 allResData.description = `Mostly ${servData[0].weather.description.toLowerCase()} throughout the day.`
                 // send servData to client
                 res.send(allResData)
