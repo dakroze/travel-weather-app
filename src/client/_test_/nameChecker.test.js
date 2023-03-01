@@ -1,8 +1,17 @@
 // Import the js file to test
-import { checkForText } from "../js/nameChecker.js"
+import { checkForCity, autoComplete, checkDate } from "../js/cityChecker.js"
 
-describe("Testing: 'checkForText()'", () => {
+describe("Testing: 'checkForCity(), autoComplete() and checkDate()'", () => {
     test('Should be defined', () => {
-        expect(checkForText).toBeDefined();
+        expect(checkForCity).toBeDefined();
+    });
+
+    test('Should be defined', () => {
+        expect(autoComplete).toBeDefined();
+    });
+
+    test('Should be defined', () => {
+        expect(checkDate).toBeDefined();
     })
 });
+
