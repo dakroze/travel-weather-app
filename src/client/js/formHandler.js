@@ -31,7 +31,7 @@ function handleSubmit(event) {
             myDate.innerHTML = formData.date.slice(5,8)+formData.date.slice(8,10)+'-'+formData.date.slice(0,4)
             hiLo.innerHTML = `${data.weatherHigh}, ${data.weatherLow}`
             myDesc.innerHTML = data.description
-            document.getElementById('user-fb-wrapper').style.display = 'grid';
+            document.getElementById('user-fb-wrapper').style.display = 'flex';
         })
     }
 }

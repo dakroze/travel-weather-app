@@ -37,7 +37,7 @@ app.post('/travelTime', (req,res) => {
     posExt.fetchSumtin(`https://pixabay.com/api/?key=${process.env.PX_API_KEY}&q=${userData.city}+landmark&category=travel&image_type=photo`)
     .then(data => {
         if (data.total === 0){
-            allResData.pictureURL = "https://pixabay.com/get/gbc55c80e82a2fa86be29fbf5b14ca454653883c00bae8f48e83e1dc8cedc32c018eadd3469bb101365dd6c7cb6382ce3aba2a03f972f20ea00136b38d0c0011d_640.jpg";
+            allResData.pictureURL = 'https://pixabay.com/get/g353fd67d55d6b4a056ce806a7e511eb763173e66672193e8a8fafd96cdc2bca64572b2601b16ff83a0fc6469205db505637dc714b686f2a6eba756db083d2900_640.jpg';
         } else {
             // generate random hit from all hits
             const hit = data.hits[Math.floor(Math.random() * data.hits.length)];

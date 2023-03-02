@@ -13,7 +13,7 @@ a, abbr, acronym, address, big, cite, code,
 del, dfn, em, ins, kbd, q, s, samp,
 small, strike, strong, sub, sup, tt, var,
 b, u, i, center,
-dl, dt, dd, ol, ul, li,
+dl, dt, dd, ol,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
 article, aside, canvas, details, embed,
@@ -25,6 +25,13 @@ time, mark, audio, video {
 	vertical-align: baseline;
   font-family: 'Noto Sans JP', sans-serif;
   font-weight: 700;
+}
+
+
+ul,ol {
+  padding: 0;
+  list-style-type: none;
+  list-style: none;
 }
 
 h1{
@@ -44,14 +51,17 @@ a:hover{
   color: #155799;
 }
 
-
-img{
+img {
+  max-width: 100%;
+  height: auto;
   border-radius: 5px;
 }
+
 
 p {
   font-weight: 400;
 }
+
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
@@ -60,27 +70,28 @@ footer, header, hgroup, menu, nav, section {
 body {
 	line-height: 1;
 }
-ol, ul {
-	list-style: none;
-}
+
+
 blockquote, q {
 	quotes: none;
 }
+
 blockquote:before, blockquote:after,
 q:before, q:after {
 	content: '';
 	content: none;
 }
+
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-ul {
-    list-style-type: none;
-}
+
 
 main {
   background-color: #f5f7fa;
+  width: 100vw;
+  padding: 30px;
 }
 
 
